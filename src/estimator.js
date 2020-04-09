@@ -29,8 +29,8 @@ const covid19ImpactEstimator = (data) => {
   const impactSevereCasesByRequestedTime = Math.ceil(impactInfectionsByRequestedTime * 0.15);
   const impactHospitalBedsByRequestedTime = Math.ceil(data.totalHospitalBeds * 0.35)
                                   - impactSevereCasesByRequestedTime;
-  const impactCasesForICUByRequestedTime = Math.ceil(impactInfectionsByRequestedTime * 0.05);
-  const impactCasesForVentilatorsByRequestedTime = Math.ceil(
+  const impactCasesForICUByRequestedTime = Math.floor(impactInfectionsByRequestedTime * 0.05);
+  const impactCasesForVentilatorsByRequestedTime = Math.floor(
     impactInfectionsByRequestedTime * 0.02
   );
   const impactDollarsInFlight = impactInfectionsByRequestedTime
@@ -43,7 +43,7 @@ const covid19ImpactEstimator = (data) => {
     hospitalBedsByRequestedTime: impactHospitalBedsByRequestedTime,
     casesForICUByRequestedTime: impactCasesForICUByRequestedTime,
     casesForVentilatorsByRequestedTime: impactCasesForVentilatorsByRequestedTime,
-    dollarsInFlight: impactDollarsInFlight.toFixed(2)
+    dollarsInFlight: Number(impactDollarsInFlight.toFixed(2))
   };
 
 
@@ -56,10 +56,10 @@ const covid19ImpactEstimator = (data) => {
   );
   const severeImpactHospitalBedsByRequestedTime = Math.ceil(data.totalHospitalBeds * 0.35)
                                         - severeimpactSevereCasesByRequestedTime;
-  const severeimpactCasesForICUByRequestedTime = Math.ceil(
+  const severeimpactCasesForICUByRequestedTime = Math.floor(
     severeimpactInfectionsByRequestedTime * 0.05
   );
-  const severeimpactCasesForVentilatorsByRequestedTime = Math.ceil(
+  const severeimpactCasesForVentilatorsByRequestedTime = Math.floor(
     severeimpactInfectionsByRequestedTime * 0.02
   );
   const severeimpactDollarsInFlight = severeimpactInfectionsByRequestedTime
@@ -72,7 +72,7 @@ const covid19ImpactEstimator = (data) => {
     hospitalBedsByRequestedTime: severeImpactHospitalBedsByRequestedTime,
     casesForICUByRequestedTime: severeimpactCasesForICUByRequestedTime,
     casesForVentilatorsByRequestedTime: severeimpactCasesForVentilatorsByRequestedTime,
-    dollarsInFlight: severeimpactDollarsInFlight.toFixed(2)
+    dollarsInFlight: Number(severeimpactDollarsInFlight.toFixed(2))
   };
 
   /** Object returned */
