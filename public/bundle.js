@@ -48,7 +48,7 @@ const covid19ImpactEstimator = data => {
     hospitalBedsByRequestedTime: impactHospitalBedsByRequestedTime,
     casesForICUByRequestedTime: impactCasesForICUByRequestedTime,
     casesForVentilatorsByRequestedTime: impactCasesForVentilatorsByRequestedTime,
-    dollarsInFlight: Number(impactDollarsInFlight.toFixed(2))
+    dollarsInFlight: Math.trunc(impactDollarsInFlight)
   };
   /** Severe Impact computation */
 
@@ -66,7 +66,7 @@ const covid19ImpactEstimator = data => {
     hospitalBedsByRequestedTime: severeImpactHospitalBedsByRequestedTime,
     casesForICUByRequestedTime: severeimpactCasesForICUByRequestedTime,
     casesForVentilatorsByRequestedTime: severeimpactCasesForVentilatorsByRequestedTime,
-    dollarsInFlight: Number(severeimpactDollarsInFlight.toFixed(2))
+    dollarsInFlight: Math.trunc(severeimpactDollarsInFlight)
   };
   /** Object returned */
 
