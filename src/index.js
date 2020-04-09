@@ -18,8 +18,8 @@ submitBtn.addEventListener('click', () => {
     region: {
       name: 'Africa',
       avgAge: 19.7,
-      avgDailyIncomeInUSD: 5,
-      avgDailyIncomePopulation: 0.71
+      avgDailyIncomeInUSD: 4,
+      avgDailyIncomePopulation: 0.73
     }
   });
 
