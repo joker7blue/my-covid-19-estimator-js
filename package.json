@@ -5,7 +5,8 @@
   "license": "MIT",
   "private": false,
   "scripts": {
-    "lint": "eslint ./src/"
+    "lint": "eslint ./src/",
+    "build-js": "browserify ./src/estimator.js ./src/index.js -o ./public/bundle.js"
   },
   "dependencies": {
     "on-covid-19": "^0.1.3"
@@ -21,5 +22,17 @@
   },
   "browserslist": [
     "last 1 Chrome versions"
-  ]
+  ],
+  "browserify": {
+    "transform": [
+      [
+        "babelify",
+        {
+          "presets": [
+            "@babel/preset-env"
+          ]
+        }
+      ]
+    ]
+  }
 }
