@@ -1,19 +1,21 @@
 const normalizePeriod = (period, timeToElapse) => {
+  let nbreDays = null;
+
   switch (period) {
     case 'days':
-      return timeToElapse;
-
+      nbreDays = timeToElapse;
+      break;
     case 'weeks':
-      return (7 * timeToElapse);
-
+      nbreDays = 7 * timeToElapse;
+      break;
     case 'months':
-      return (30 * timeToElapse);
-
+      nbreDays = 30 * timeToElapse;
+      break;
     default:
       break;
   }
 
-  return null;
+  return nbreDays;
 };
 
 
