@@ -27,7 +27,7 @@ const covid19ImpactEstimator = (data) => {
   const impactCurrentlyInfected = data.reportedCases * 10;
   const impactInfectionsByRequestedTime = impactCurrentlyInfected * (2 ** Math.floor(time / 3));
   const impactSevereCasesByRequestedTime = Math.floor(impactInfectionsByRequestedTime * 0.15);
-  const impactTotalHospitalBeds = Math.floor(data.totalHospitalBeds * 0.65)
+  const impactHospitalBedsByRequestedTime = Math.floor(data.totalHospitalBeds * 0.65)
                                   - impactSevereCasesByRequestedTime;
   const impactCasesForICUByRequestedTime = Math.floor(impactInfectionsByRequestedTime * 0.05);
   const impactCasesForVentilatorsByRequestedTime = Math.floor(
@@ -40,7 +40,7 @@ const covid19ImpactEstimator = (data) => {
     currentlyInfected: impactCurrentlyInfected,
     infectionsByRequestedTime: impactInfectionsByRequestedTime,
     severeCasesByRequestedTime: impactSevereCasesByRequestedTime,
-    totalHospitalBeds: impactTotalHospitalBeds,
+    hospitalBedsByRequestedTime: impactHospitalBedsByRequestedTime,
     casesForICUByRequestedTime: impactCasesForICUByRequestedTime,
     casesForVentilatorsByRequestedTime: impactCasesForVentilatorsByRequestedTime,
     dollarsInFlight: impactDollarsInFlight.toFixed(2)
@@ -54,7 +54,7 @@ const covid19ImpactEstimator = (data) => {
   const severeimpactSevereCasesByRequestedTime = Math.floor(
     severeimpactInfectionsByRequestedTime * 0.15
   );
-  const severeimpactTotalHospitalBeds = Math.floor((data.totalHospitalBeds * 0.65))
+  const severeImpactHospitalBedsByRequestedTime = Math.floor((data.totalHospitalBeds * 0.65))
                                         - severeimpactSevereCasesByRequestedTime;
   const severeimpactCasesForICUByRequestedTime = Math.floor(
     severeimpactInfectionsByRequestedTime * 0.05
@@ -69,7 +69,7 @@ const covid19ImpactEstimator = (data) => {
     currentlyInfected: severeimpactCurrentlyInfected,
     infectionsByRequestedTime: severeimpactInfectionsByRequestedTime,
     severeCasesByRequestedTime: severeimpactSevereCasesByRequestedTime,
-    totalHospitalBeds: severeimpactTotalHospitalBeds,
+    hospitalBedsByRequestedTime: severeImpactHospitalBedsByRequestedTime,
     casesForICUByRequestedTime: severeimpactCasesForICUByRequestedTime,
     casesForVentilatorsByRequestedTime: severeimpactCasesForVentilatorsByRequestedTime,
     dollarsInFlight: severeimpactDollarsInFlight.toFixed(2)
