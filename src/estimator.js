@@ -26,7 +26,7 @@ const covid19ImpactEstimator = (data) => {
   /** Impact computation */
   const impactCurrentlyInfected = data.reportedCases * 10;
   const impactInfectionsByRequestedTime = impactCurrentlyInfected * (2 ** Math.floor(time / 3));
-  const impactSevereCasesByRequestedTime = Math.floor(impactInfectionsByRequestedTime * 0.15);
+  const impactSevereCasesByRequestedTime = Math.ceil(impactInfectionsByRequestedTime * 0.15);
   const impactHospitalBedsByRequestedTime = Math.ceil(data.totalHospitalBeds * 0.35)
                                   - impactSevereCasesByRequestedTime;
   const impactCasesForICUByRequestedTime = Math.floor(impactInfectionsByRequestedTime * 0.05);
@@ -51,7 +51,7 @@ const covid19ImpactEstimator = (data) => {
   const severeimpactCurrentlyInfected = data.reportedCases * 50;
   const severeimpactInfectionsByRequestedTime = severeimpactCurrentlyInfected
                                                 * (2 ** Math.floor(time / 3));
-  const severeimpactSevereCasesByRequestedTime = Math.floor(
+  const severeimpactSevereCasesByRequestedTime = Math.ceil(
     severeimpactInfectionsByRequestedTime * 0.15
   );
   const severeImpactHospitalBedsByRequestedTime = Math.ceil(data.totalHospitalBeds * 0.35)
