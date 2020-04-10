@@ -24,13 +24,13 @@ const covid19ImpactEstimator = (data) => {
   const time = normalizePeriod(data.periodType, data.timeToElapse);
 
   /** Impact computation */
-  const impactCurrentlyInfected = data.reportedCases * 10;
-  const impactInfectionsByRequestedTime = impactCurrentlyInfected * (2 ** Math.floor(time / 3));
-  const impactSevereCasesByRequestedTime = Math.floor(impactInfectionsByRequestedTime * 0.15);
-  const impactHospitalBedsByRequestedTime = Math.floor(data.totalHospitalBeds * 0.35)
+  const impactCurrentlyInfected = Math.trunc(data.reportedCases * 10);
+  const impactInfectionsByRequestedTime = impactCurrentlyInfected * (2 ** Math.trunc(time / 3));
+  const impactSevereCasesByRequestedTime = Math.trunc(impactInfectionsByRequestedTime * 0.15);
+  const impactHospitalBedsByRequestedTime = Math.trunc(data.totalHospitalBeds * 0.35)
                                   - impactSevereCasesByRequestedTime;
-  const impactCasesForICUByRequestedTime = Math.floor(impactInfectionsByRequestedTime * 0.05);
-  const impactCasesForVentilatorsByRequestedTime = Math.floor(
+  const impactCasesForICUByRequestedTime = Math.trunc(impactInfectionsByRequestedTime * 0.05);
+  const impactCasesForVentilatorsByRequestedTime = Math.trunc(
     impactInfectionsByRequestedTime * 0.02
   );
   const impactDollarsInFlight = (impactInfectionsByRequestedTime
@@ -48,18 +48,18 @@ const covid19ImpactEstimator = (data) => {
 
 
   /** Severe Impact computation */
-  const severeimpactCurrentlyInfected = data.reportedCases * 50;
+  const severeimpactCurrentlyInfected = Math.trunc(data.reportedCases * 50);
   const severeimpactInfectionsByRequestedTime = severeimpactCurrentlyInfected
-                                                * (2 ** Math.floor(time / 3));
-  const severeimpactSevereCasesByRequestedTime = Math.floor(
+                                                * (2 ** Math.trunc(time / 3));
+  const severeimpactSevereCasesByRequestedTime = Math.trunc(
     severeimpactInfectionsByRequestedTime * 0.15
   );
-  const severeImpactHospitalBedsByRequestedTime = Math.floor(data.totalHospitalBeds * 0.35)
+  const severeImpactHospitalBedsByRequestedTime = Math.trunc(data.totalHospitalBeds * 0.35)
                                         - severeimpactSevereCasesByRequestedTime;
-  const severeimpactCasesForICUByRequestedTime = Math.floor(
+  const severeimpactCasesForICUByRequestedTime = Math.trunc(
     severeimpactInfectionsByRequestedTime * 0.05
   );
-  const severeimpactCasesForVentilatorsByRequestedTime = Math.floor(
+  const severeimpactCasesForVentilatorsByRequestedTime = Math.trunc(
     severeimpactInfectionsByRequestedTime * 0.02
   );
   const severeimpactDollarsInFlight = (severeimpactInfectionsByRequestedTime
