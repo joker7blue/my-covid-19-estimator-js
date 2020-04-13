@@ -2,10 +2,13 @@
   "name": "covid-19-estimator-js",
   "version": "1.0.0",
   "repository": "git@github.com:BuildforSDG-Cohort1-Assessment/covid-19-estimator-js.git",
+  "homepage": "https://joker7blue.github.io/my-covid-19-estimator-js",
   "license": "MIT",
   "private": false,
   "scripts": {
-    "lint": "eslint ./src/"
+    "lint": "eslint ./src/",
+    "build-js": "browserify ./src/estimator.js ./src/index.js -o ./public/bundle.js",
+    "deploy": "gh-pages -d public"
   },
   "dependencies": {
     "on-covid-19": "^0.1.3"
@@ -14,12 +17,26 @@
     "@babel/core": "^7.9.0",
     "@babel/preset-env": "^7.9.0",
     "babel-jest": "^25.2.0",
-    "jest": "^25.2.0",
+    "babelify": "^10.0.0",
     "eslint": "^6.8.0",
     "eslint-config-airbnb-base": "^14.0.0",
-    "eslint-plugin-import": "^2.20.1"
+    "eslint-plugin-import": "^2.20.1",
+    "gh-pages": "^2.2.0",
+    "jest": "^25.2.0"
   },
   "browserslist": [
     "last 1 Chrome versions"
-  ]
+  ],
+  "browserify": {
+    "transform": [
+      [
+        "babelify",
+        {
+          "presets": [
+            "@babel/preset-env"
+          ]
+        }
+      ]
+    ]
+  }
 }
