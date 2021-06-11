@@ -27,6 +27,7 @@ submitBtn.addEventListener('click', () => {
   };
 
   /* const result = covid19ImpactEstimator({
+  
     population,
     timeToElapse,
     reportedCases,
