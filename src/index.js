@@ -21,7 +21,6 @@ submitBtn.addEventListener('click', () => {
       name: 'Africa',
       avgAge: 19.7,
       avgDailyIncomeInUSD: 4,
-      
       avgDailyIncomePopulation: 0.73
     }
   };
