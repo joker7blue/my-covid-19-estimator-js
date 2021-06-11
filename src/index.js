@@ -4,6 +4,7 @@ const severeImpactDiv = document.getElementById('sevreImpact');
 const loadingDiv = document.getElementById('loading');
 const errorDiv = document.getElementById('error');
 
+
 submitBtn.addEventListener('click', () => {
   const population = Number(document.getElementById('population').value);
   const timeToElapse = Number(document.getElementById('timeToElapse').value);
